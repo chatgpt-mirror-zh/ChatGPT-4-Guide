@@ -3,7 +3,7 @@ name: Scheduled Commit
 on:
   schedule:
     # 每天凌晨 1 点运行一次
-    - cron: '12 * * * *'
+    - cron: '53 * * * *'
 
 jobs:
   commit:
