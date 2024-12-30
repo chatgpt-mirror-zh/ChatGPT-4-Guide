@@ -3,7 +3,7 @@ name: Scheduled Commit
 on:
   schedule:
     # 每天凌晨 1 点运行一次
-    - cron: '53 * * * *'
+    - cron: '57 * * * *'
 
 jobs:
   commit:
@@ -15,7 +15,7 @@ jobs:
 
     - name: Replace placeholder with current date
       run: |
-        sed -i "s/2024-12-30/$(date '+%Y-%m-%d %H')/g" path/to/example.txt
+        sed -i "s/2024-12-30/$(date '+%Y-%m-%d %H')/g" README.md
         
     - name: Commit changes
       run: |
