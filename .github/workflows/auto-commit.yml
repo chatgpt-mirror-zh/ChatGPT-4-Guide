@@ -1,0 +1,29 @@
+name: Scheduled Commit
+
+on:
+  schedule:
+    # 每天凌晨 1 点运行一次
+    - cron: '12 * * * *'
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Replace placeholder with current date
+      run: |
+        sed -i "s/2024-12-30/$(date '+%Y-%m-%d %H')/g" path/to/example.txt
+        
+    - name: Commit changes
+      run: |
+        git config --global user.name 'chatgpt-mirror-zh'
+        git config --global user.email 'ananquanquan2024@163.com'
+        git add .
+        git commit -m "Automated commit"
+        git push
+      env:
+        # 需要设置一个 GitHub token 以便能够推送更改
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
